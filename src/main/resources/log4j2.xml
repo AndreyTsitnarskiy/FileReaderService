@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <File name="InfoTransactions" fileName="logs/error.log" immediateFlush="true">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+        <File name="phrase" fileName="logs/operation_info.log" immediateFlush="true">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </appenders>
+    <loggers>
+        <Logger name="phrase" level="info" additivity="false">
+            <appender-ref ref="phrase" level="info"/>
+        </Logger>
+        <root level="info">
+            <appender-ref ref="InfoTransactions" level="info"/>
+        </root>
+    </loggers>
+</configuration>
