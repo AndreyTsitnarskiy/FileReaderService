@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +19,7 @@ public class DataBaseLogic {
     private Transaction transaction = session.beginTransaction();
 
     private void addPhrase() {
-        LOGGER.info("Добавляем записи в базу - nameMethod - addPhrase");
+        LOGGER.info("Парсим файл собираем новые цитаты в лист");
         int count = 0;
         List<String> parser = parserFile.parseFile(file);
         List<String> phrases = parserFile.returnPhrases(parser);
@@ -30,9 +32,7 @@ public class DataBaseLogic {
             Phrase phrase = new Phrase(phrases.get(i), authors.get(i));
             session.save(phrase);
         }
-        transaction.commit();
-        session.close();
-        LOGGER.info("Записей добавлено: " + count + " nameMethod - addPhrase");
+        LOGGER.info("Новых записей " + count + " nameMethod - addPhrase");
     }
 
     private long countRowsTablePhrase() {
