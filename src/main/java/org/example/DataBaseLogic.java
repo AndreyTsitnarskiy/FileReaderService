@@ -4,8 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +12,7 @@ public class DataBaseLogic {
 
     private Session session = new HibernateConnection().getSessionFactory().getCurrentSession();
     private ParserFile parserFile = new ParserFile();
-    private File file = new File("data/say.txt");
+    private File file = new File("/home/bot/bot_application/say.txt");
     private final Logger LOGGER = LogManager.getLogger("phrase");
     private Transaction transaction = session.beginTransaction();
 
